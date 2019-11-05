@@ -1,4 +1,4 @@
-package com.battesini.storewsmongodb;
+package com.battesini.wsmongodb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
