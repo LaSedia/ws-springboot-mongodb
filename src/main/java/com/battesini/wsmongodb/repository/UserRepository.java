@@ -8,6 +8,4 @@ import com.battesini.wsmongodb.domain.User;
 @Repository
 public interface UserRepository extends MongoRepository<User, String>	{
 	
-	
-
 }
