@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import com.battesini.wsmongodb.domain.Post;
 import com.battesini.wsmongodb.domain.User;
 import com.battesini.wsmongodb.dto.AuthorDTO;
+import com.battesini.wsmongodb.dto.CommentDTO;
 import com.battesini.wsmongodb.repository.PostRepository;
 import com.battesini.wsmongodb.repository.UserRepository;
 
@@ -38,8 +39,15 @@ public class Instantiation implements CommandLineRunner	{
 		
 		userRepository.saveAll(Arrays.asList(maria, alex, bob));
 
-		Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu viagem!", "Hoje vou viajar!!", new AuthorDTO(maria));
+		Post post1 = new Post(null, sdf.parse("21/03/2019"), "Partiu viagem!", "Hoje vou viajar!!", new AuthorDTO(maria));
 		Post post2 = new Post(null, sdf.parse("23/03/2019"), "Bom dia facers!", "Beijos luz seguimores!!", new AuthorDTO(maria));
+
+		CommentDTO c1 = new CommentDTO(new AuthorDTO(alex), sdf.parse("21/03/2019"), "Boa viagem!");
+		CommentDTO c2 = new CommentDTO(new AuthorDTO(bob), sdf.parse("22/03/2019"), "Aproveite.");
+		CommentDTO c3 = new CommentDTO(new AuthorDTO(alex), sdf.parse("23/03/2019"), "xxx");
+
+		post1.getComments().addAll(Arrays.asList(c1, c2));
+		post2.getComments().addAll(Arrays.asList(c3));
 		
 		postRepository.saveAll(Arrays.asList(post1, post2));
 		
